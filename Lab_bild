@@ -1,0 +1,100 @@
+
+function bild = bild(Bild,i,j,max,min,mean)
+% for a37 = i-25:1:i+25
+%     for b37 =j-25:1:j+25
+%         Bild(a37,b37) = (mean+max)/17.2;
+%     end
+% end
+% for a35 = i-23:1:i+23
+%     for b35 =j-23:1:j+23
+%         Bild(a35,b35) = (mean+max)/15.5;
+%     end
+% end
+% for a33 = i-21:1:i+21
+%     for b33 =j-21:1:j+21
+%         Bild(a33,b33) = (mean+max)/13.9;
+%     end
+% end
+% for a31 = i-19:1:i+19
+%     for b31 =j-19:1:j+19
+%         Bild(a31,b31) = (mean+max)/12.4;
+%     end
+% end
+% for a29 = i-17:1:i+17
+%     for b29 =j-17:1:j+17
+%         Bild(a29,b29) = (mean+max)/11;
+%     end
+% end
+% for a27 = i-15:1:i+15
+%     for b27 =j-15:1:j+15
+%         Bild(a27,b27) = (mean+max)/9.7;
+%     end
+% end
+% for a25 = i-13:1:i+13
+%     for b25 =j-13:1:j+13
+%         Bild(a25,b25) = (mean+max)/8.5;
+%     end
+% end
+% for a23 = i-11:1:i+11
+%     for b23 =j-11:1:j+11
+%         Bild(a23,b23) = (mean+max)/7.4;
+%     end
+% end
+for a21 = i-10:1:i+10
+    for b21 =j-10:1:j+10
+        Bild(a21,b21) = (mean+max)/6.4;
+    end
+end
+for a19 = i-9:1:i+9
+    for b19 =j-9:1:j+9
+        Bild(a19,b19) = (mean+max)/5.5;
+    end
+end
+for a17 = i-8:1:i+8
+    for b17 =j-8:1:j+8
+        Bild(a17,b17) = (mean+max)/4.7;
+    end
+end
+for a15 = i-7:1:i+7
+    for b15 =j-7:1:j+7
+        Bild(a15,b15) = (mean+max)/4;
+    end
+end
+for a13 = i-6:1:i+6
+    for b13 =j-6:1:j+6
+        Bild(a13,b13) = (mean+max)/3.4;
+    end
+end
+for a11 = i-5:1:i+5
+    for b11 =j-5:1:j+5
+        Bild(a11,b11) = (mean+max)/2.9;
+    end
+end
+
+for a9 = i-4:1:i+4
+    for b9 =j-4:1:j+4
+        Bild(a9,b9) = (mean+max)/2.5;
+    end
+end
+
+for a7 = i-3:1:i+3
+    for b7 =j-3:1:j+3
+        Bild(a7,b7) = (mean+max)/2.25;
+    end
+end
+
+for a5 = i-2:1:i+2
+    for b5 =j-2:1:j+2
+        Bild(a5,b5) = (mean+max)/2;
+    end
+end
+
+for a3 = i-1:1:i+1    % a3 means,there is a 3*3 matrix 
+    for b3 = j-1:1:j+1
+        Bild(a3,b3) = (mean+max)/1.75;
+    end
+end
+
+Bild(i,j) = max;
+bild = Bild;
+end
