@@ -1,0 +1,30 @@
+function capture_image = capture_image(Bild_SLM,i,j,centre_x,centre_y)
+vid = videoinput('winvideo',2,'RGB16_1280x1024');
+set(vid,'ReturnedColorSpace','Grayscale'); 
+set(vid,'TriggerRepeat',Inf);
+set(vid,'FramesPerTrigger',10);
+vid.FrameGrabInterval = 1;
+% src = getselectedsource(vid);
+
+
+while 1     
+    pause(0.05);    %make the video stable
+    [frame,~] = getsnapshot(vid);    %frame is the displayed image£¬metadata is a strut£¬records absolute time
+    max_image = max(max(frame));
+%     display can be hid
+%     figure;
+%     imshow(frame);
+%     title('Image');
+    %% Here need another function to cut the frame into certain shape and save it
+    % Bild_SLM = cut_shape(frame,centre_x,centre_y);
+    
+    Bild_SLM = imcrop(frame,[centre_x-150, centre_y-150, 300 ,300]);
+%     imwrite(Bild_SLM,strcat('Label\',num2str(i),'_',num2str(j),'_Y','.jpg'),'jpg'); 
+    imwrite(frame,strcat('E:\Data\Label\',num2str(i),'_',num2str(j),'_Y','.jpg'),'jpg'); 
+    % save the original image and retrun the croped image 
+
+    break;
+end
+
+capture_image = Bild_SLM;
+end
