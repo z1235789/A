@@ -1,0 +1,17 @@
+function centre_x_y = centre_x_y()
+vid = videoinput('winvideo',2,'RGB16_1280x1024');
+set(vid,'ReturnedColorSpace','Grayscale'); 
+set(vid,'TriggerRepeat',Inf);
+set(vid,'FramesPerTrigger',10);
+vid.FrameGrabInterval = 1;
+% src = getselectedsource(vid);
+
+frame =getsnapshot(vid);
+BW = im2bw(frame);
+BW = bwconncomp(BW,8);
+cent = regionprops(BW,'Centroid');
+centre = zeros(1,2);
+centre(1,:) = cent(1).Centroid;
+centre_x_y = [centre(1),centre(2)];
+
+end
