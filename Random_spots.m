@@ -1,45 +1,58 @@
-clear;
-clc;
-close all;
+%%%%%%%%%%%%%%%%%                                        %%%%%%%%%%%%%%
+% 参数的设定可以通过一个UI来进行调节
+% 这个函数中可调节的值有
+% t（spot的个数）
+% start_x（图象显示位置：x）,start_y（图像显示位置：y）
+% col（图象显示大小：列）,raw（图像显示大小：行）
+% 
+%%%%%%%%%%%%%%%%%                                        %%%%%%%%%%%%%%
 
-% figure();
 
-Image = imread('R_s_00001.jpg');
-% Image = 255-Image;    %Reverse the gray image
-% subplot(2,2,1);
-% imshow(Image);
+function Random_spots = Random_spots(Bild,i,j,n,m,centre_x,centre_y)
 
-t = 5;    % create five spots
-min_m = 50;
-max_m = 1000;
-min_n = 50;
-max_n = 700;
+Image = imread('sample.jpg');
+Image = 255 - Image;    % Reverse the gray image
+% sz = size(Image);
+[l,w] = size(Image);
+t = 3;
 
-m = min_m+(max_m-min_m).*(rand(t,1));
-n = min_n+(max_n-min_n).*(rand(t,1));
+min_m = l+1;
+max_m = 50;
+min_n = l+1;
+max_n = 50;
+Random_m = min_m + (max_m - min_m).*(rand(t,1));
+Random_n = min_n + (max_n - min_n).*(rand(t,1));
+Mat = [Random_m,Random_n];
 
-Mat_m_n = [round(m),round(n)];   % Can not be used
+start_x = 1000;
+start_y = 1000;
+col = 1080;
+raw = 768;
 
-Bild_part = zeros(768,1080);
+Bild_test = zeros(m,n);
+Bild_test = Bild;  % Black image
 for t = 1:t
-    for a = 1:16
-        for b = 1:16
-            Bild_part((a+round(n(t))),(b+round(m(t)))) = Image(a,b);
-        end
-    end    
+    for a = 1:l
+        for b = 1:w
+            raw = (j-50)+a+round(Random_m(t));
+            col = (i-50)+b+round(Random_n(t));
+            Bild_test((raw),(col)) = Image(a,b);
+%             Bild_test((i-50+round(Random_n(t))),(j-50+round(Random_m(t)))) = Image(a,b);
+        end        
+    end
+%     Bild_test = mat2gray(Bild_test);
+%     imshow(Bild_test);
     colormap(gray(256));
-    imshow(Bild_part,[0,255]);
-    set(gcf,'Position',[1 1 1080 768]);
-    pause(0.01);
+    imshow(Bild_test,[0,255]);
+    set(gcf,'Position',[start_x start_y col raw]);
+    imwrite(Bild_test,strcat('Test\',num2str(i),'_',num2str(j),'_',num2str(t),'_X','.jpg'),'jpg');
     
+    capture(Bild_test,i,j,m,n,centre_x,centre_y,a,b,t);
 end
 
-% There are two ways to show the image in grayscale,colormap() & mat2gray()
-% subplot(2,2,3)
-% colormap(gray(256))
-% imshow(Bild_part,[0,255]);
-% 
-% 
-% Bild_part = mat2gray(Bild_part);
-% subplot(2,2,4);
-% imshow(Bild_part);
+% colormap(gray(256));
+% imshow(Bild_test,[0,255]);
+% set(gcf,'Position',[start_x start_y col raw])
+
+Random_spots = Bild_test;
+end
