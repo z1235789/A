@@ -1,5 +1,6 @@
 function centroid_x_y = centroid_x_y()    % The first function to run,returning the center value of the beam-spot
-vid = videoinput('winvideo',2);    % Use the camera's default value
+% vid = videoinput('winvideo',2);    % Use the camera's default value
+vid = videoinput('winvideo',2,'RGB16_1280x1024');
 set(vid,'ReturnedColorSpace','Grayscale');     % Use the grayscale
 set(vid,'TriggerRepeat',Inf);
 set(vid,'FramesPerTrigger',10);
