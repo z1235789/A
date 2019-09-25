@@ -5,7 +5,7 @@ figure()
 subplot(2,2,1);
 imshow(R);
 title('Ring');
-R_s = imresize(R,0.01,'nearest');
+R_s = imresize(R,0.05,'nearest');
 subplot(2,2,2);
 imshow(R_s);
 title('Sample');
