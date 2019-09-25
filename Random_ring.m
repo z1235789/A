@@ -8,17 +8,17 @@ clear all;
 clc;
 close all
 
-% x_res = 1920; % Aufl鰏ung des SLM eingeben
+% x_res = 1920; % Aufl?ung des SLM eingeben
 % y_res = 1080;
-x_res = 1080; % Aufl鰏ung des SLM eingeben
-y_res = 1080;
+x_res = 500; % Aufl?ung des SLM eingeben
+y_res = 500;
 [X,Y] = meshgrid(1:1:x_res, 1:1:y_res);
 [X2,Y2] = meshgrid(-x_res/2:1:x_res/2-1, -y_res/2:1:y_res/2-1);
 
 % Spot 1:
 shift_x1 = 0; % Auslenkung in x-Richtung, max. Sichtbereich auf CMOS: x = 
 shift_y1 = 0; % Auslenkung in y-Richtung, max. Sichtbereich auf CMOS: y = 
-shift_z1 = 0.00001; % Verschiebung in z-Richtung (Positiv: verk黵zter Fokus, Negativ: verl鋘gerter Fokus); Achtung: 膎derung sehr gro?!
+shift_z1 = 0.0001; % Verschiebung in z-Richtung (Positiv: verk?zter Fokus, Negativ: verl?gerter Fokus); Achtung: ?derung sehr gro?!
 
 phi1 = mod(1/100 * (2*pi*shift_x1*X + 2*pi*shift_y1*Y)+shift_z1*(X2.^2+Y2.^2),2*pi);
 
@@ -29,7 +29,7 @@ shift_z2 = 0;
 
 phi2 = mod(1/100 * (2*pi*shift_x2*X + 2*pi*shift_y2*Y)+shift_z2*(X2.^2+Y2.^2),2*pi);
 
-% F黵 den erhalt der 0ten-Ordung: Spot mit x/y/z=0 (ergibt bei der Superposition +1)
+% F? den erhalt der 0ten-Ordung: Spot mit x/y/z=0 (ergibt bei der Superposition +1)
 
 %Random Image:
 phi_random = rand([1080 1920]);
